@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>MassiVo</title>
+
+<style>
+body{
+margin:0;
+font-family: Arial;
+direction: rtl;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+header{
+background:#020617;
+padding:25px;
+font-size:32px;
+font-weight:bold;
+}
+
+section{
+background:#1e293b;
+margin:25px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+input, button{
+width:90%;
+padding:12px;
+margin:8px;
+border-radius:8px;
+border:none;
+font-size:16px;
+}
+
+button{
+background:#22c55e;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#16a34a;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+MassiVo
+</header>
+
+<section>
+<h2>👤 تسجيل المطعم</h2>
+
+<input id="name" placeholder="اسم المطعم">
+<input id="email" placeholder="البريد الإلكتروني">
+<input id="pass" type="password" placeholder="كلمة المرور">
+
+<button onclick="saveUser()">تسجيل</button>
+
+<p id="msg"></p>
+</section>
+
+<section>
+<h2>📊 محاكاة الإحصائيات الذكية</h2>
+
+<input id="customers" type="number" placeholder="عدد الزبناء في الساعة">
+
+<button onclick="analyze()">تحليل الإحصائيات</button>
+
+<p id="result"></p>
+</section>
+
+<section>
+<h2>📢 إنشاء إعلان تجريبي</h2>
+
+<input id="discount" placeholder="نسبة التخفيض">
+<input id="food" placeholder="الوجبة المستهدفة">
+
+<button onclick="createAd()">إنشاء الإعلان الذكي</button>
+
+<p id="ad"></p>
+</section>
+
+<script>
+
+function saveUser(){
+let name=document.getElementById("name").value;
+localStorage.setItem("massivo_user",name);
+
+document.getElementById("msg")
+.innerHTML="✅ تم تسجيل المطعم بنجاح (نموذج تجريبي)";
+}
+
+function analyze(){
+let customers=document.getElementById("customers").value;
+
+let suggestion="";
+
+if(customers<20){
+suggestion="⚠️ الإقبال ضعيف – يفضل تقليل الإنتاج";
+}else if(customers<60){
+suggestion="📊 الإقبال متوسط – الإنتاج مناسب";
+}else{
+suggestion="🔥 الإقبال قوي – حافظ على الإنتاج الحالي";
+}
+
+document.getElementById("result").innerHTML=suggestion;
+}
+
+function createAd(){
+let discount=document.getElementById("discount").value;
+let food=document.getElementById("food").value;
+
+document.getElementById("ad").innerHTML=
+"✨ إعلان ذكي تجريبي: خصم "+discount+
+"% على "+food+
+" في الوقت المناسب لجذب الزبناء";
+}
+
+</script>
+
+</body>
+</html>
